@@ -1,0 +1,243 @@
+{
+"portada": "img/c01_1.jpg",
+"cantos": [
+{
+"n": 1,
+"roman": "I",
+"dur": 450.36,
+"lugar": "La selva oscura",
+"thumb": "img/t/c01_1.jpg"
+},
+{
+"n": 2,
+"roman": "II",
+"dur": 478.04,
+"lugar": "La ladera oscura · Al caer la tarde",
+"thumb": "img/t/c02_1.jpg"
+},
+{
+"n": 3,
+"roman": "III",
+"dur": 458.28,
+"lugar": "La puerta del Infierno",
+"thumb": "img/t/c03_1.jpg"
+},
+{
+"n": 4,
+"roman": "IV",
+"dur": 512.28,
+"lugar": "Borde del abismo",
+"thumb": "img/t/c04_1.jpg"
+},
+{
+"n": 5,
+"roman": "V",
+"dur": 476.52,
+"lugar": "Círculo 2 · Minos",
+"thumb": "img/t/c05_1.jpg"
+},
+{
+"n": 6,
+"roman": "VI",
+"dur": 411.64,
+"lugar": "Círculo 3 · Cerbero",
+"thumb": "img/t/c06_1.jpg"
+},
+{
+"n": 7,
+"roman": "VII",
+"dur": 453.56,
+"lugar": "Círculo 4 · Pluto",
+"thumb": "img/t/c07_1.jpg"
+},
+{
+"n": 8,
+"roman": "VIII",
+"dur": 446.28,
+"lugar": "Laguna Estigia · La barca de Flegias",
+"thumb": "img/t/c08_1.jpg"
+},
+{
+"n": 9,
+"roman": "IX",
+"dur": 473.48,
+"lugar": "Ante la puerta de Dite",
+"thumb": "img/t/c09_1.jpg"
+},
+{
+"n": 10,
+"roman": "X",
+"dur": 471.72,
+"lugar": "Círculo 6 · Los herejes",
+"thumb": "img/t/c10_1.jpg"
+},
+{
+"n": 11,
+"roman": "XI",
+"dur": 413.4,
+"lugar": "Círculo 6 · La tumba del papa Anastasio",
+"thumb": "img/t/c11_1.jpg"
+},
+{
+"n": 12,
+"roman": "XII",
+"dur": 464.92,
+"lugar": "Círculo 7 · El derrumbe y el Minotauro",
+"thumb": "img/t/c12_1.jpg"
+},
+{
+"n": 13,
+"roman": "XIII",
+"dur": 522.56,
+"lugar": "Círculo 7, recinto 2 · El bosque de los suicidas",
+"thumb": "img/t/c13_1.jpg"
+},
+{
+"n": 14,
+"roman": "XIV",
+"dur": 479.24,
+"lugar": "Círculo 7, recinto 3 · El arenal de fuego",
+"thumb": "img/t/c14_1.jpg"
+},
+{
+"n": 15,
+"roman": "XV",
+"dur": 409.48,
+"lugar": "Círculo 7, recinto 3 · El dique del arroyo",
+"thumb": "img/t/c15_1.jpg"
+},
+{
+"n": 16,
+"roman": "XVI",
+"dur": 448.72,
+"lugar": "Círculo 7, recinto 3 · Tres florentinos",
+"thumb": "img/t/c16_1.jpg"
+},
+{
+"n": 17,
+"roman": "XVII",
+"dur": 468.12,
+"lugar": "Borde del abismo · Gerión",
+"thumb": "img/t/c17_1.jpg"
+},
+{
+"n": 18,
+"roman": "XVIII",
+"dur": 461.76,
+"lugar": "Círculo 8 · Malebolge",
+"thumb": "img/t/c18_1.jpg"
+},
+{
+"n": 19,
+"roman": "XIX",
+"dur": 448.28,
+"lugar": "Círculo 8 · Fosa 3 · Simoníacos",
+"thumb": "img/t/c19_1.jpg"
+},
+{
+"n": 20,
+"roman": "XX",
+"dur": 439.4,
+"lugar": "Círculo 8 · Fosa 4 · Adivinos",
+"thumb": "img/t/c20_1.jpg"
+},
+{
+"n": 21,
+"roman": "XXI",
+"dur": 461.64,
+"lugar": "Círculo 8 · Fosa 5 · La pez hirviendo",
+"thumb": "img/t/c21_1.jpg"
+},
+{
+"n": 22,
+"roman": "XXII",
+"dur": 512.04,
+"lugar": "Círculo 8 · Fosa 5 · Con los diez diablos",
+"thumb": "img/t/c22_1.jpg"
+},
+{
+"n": 23,
+"roman": "XXIII",
+"dur": 511.8,
+"lugar": "Círculo 8 · Fosa 5 · Huida en silencio",
+"thumb": "img/t/c23_1.jpg"
+},
+{
+"n": 24,
+"roman": "XXIV",
+"dur": 500.12,
+"lugar": "Círculo 8 · Fosa 6 · La calma vuelve",
+"thumb": "img/t/c24_1.jpg"
+},
+{
+"n": 25,
+"roman": "XXV",
+"dur": 522.44,
+"lugar": "Círculo 8 · Fosa 7 · Blasfemia y Caco",
+"thumb": "img/t/c25_1.jpg"
+},
+{
+"n": 26,
+"roman": "XXVI",
+"dur": 470.64,
+"lugar": "Círculo 8 · Hacia la fosa 8",
+"thumb": "img/t/c26_1.jpg"
+},
+{
+"n": 27,
+"roman": "XXVII",
+"dur": 465.24,
+"lugar": "Círculo 8 · Fosa 8 · Los malos consejeros",
+"thumb": "img/t/c27_1.jpg"
+},
+{
+"n": 28,
+"roman": "XXVIII",
+"dur": 479.48,
+"lugar": "Círculo 8 · Fosa 9 · Los que siembran división",
+"thumb": "img/t/c28_1.jpg"
+},
+{
+"n": 29,
+"roman": "XXIX",
+"dur": 457.32,
+"lugar": "Círculo 8 · Fosa 9 · Los que siembran división",
+"thumb": "img/t/c29_1.jpg"
+},
+{
+"n": 30,
+"roman": "XXX",
+"dur": 494.76,
+"lugar": "Círculo 8 · Fosa 10 · Los falsificadores",
+"thumb": "img/t/c30_1.jpg"
+},
+{
+"n": 31,
+"roman": "XXXI",
+"dur": 488.84,
+"lugar": "Círculo 9 · El pozo de los gigantes",
+"thumb": "img/t/c31_1.jpg"
+},
+{
+"n": 32,
+"roman": "XXXII",
+"dur": 477.76,
+"lugar": "Círculo 9 · El fondo del Infierno",
+"thumb": "img/t/c32_1.jpg"
+},
+{
+"n": 33,
+"roman": "XXXIII",
+"dur": 538.68,
+"lugar": "Círculo 9 · Antenora · El conde Ugolino",
+"thumb": "img/t/c33_1.jpg"
+},
+{
+"n": 34,
+"roman": "XXXIV",
+"dur": 479.16,
+"lugar": "Círculo 9 · Judeca · Traidores a sus señores",
+"thumb": "img/t/c34_1.jpg"
+}
+]
+}

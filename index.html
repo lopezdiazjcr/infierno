@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d0a09">
+<meta name="description" content="El Infierno de Dante en audiolibro: los 34 cantos narrados, con música de fondo, el texto que avanza con la voz y los grabados de Gustave Doré.">
+<meta property="og:title" content="Infierno — La Divina Comedia en audiolibro">
+<meta property="og:description" content="Los 34 cantos del Infierno de Dante, narrados verso por verso, con música y los grabados de Gustave Doré.">
+<meta property="og:image" content="img/portada.jpg">
+<title>Infierno · Audiolibro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6c6 10 14 14 14 26a14 14 0 0 1-28 0c0-6 3-10 6-13 0 5 2 8 5 9-2-8 1-16 3-22z' fill='%23e0662f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #0d0a09; --bg2: #151110; --surface: #1c1715; --sunk: #2a221e; --line: #3a2f29;
+  --fg: #efe6d8; --muted: #a8998a; --faint: #75685c;
+  --ember: #e0662f; --ember-ink: #f08a52; --glow: rgba(224, 102, 47, .16); --glow2: rgba(224, 102, 47, .32);
+  --f-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-read: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --read-size: 1.32rem;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); }
+body { font-family: var(--f-ui); -webkit-text-size-adjust: 100%; min-height: 100vh; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; border-radius: 6px; }
+a { color: var(--ember-ink); }
+[hidden] { display: none !important; }
+
+/* ---------- portada / índice ---------- */
+.home { max-width: 72rem; margin: 0 auto; padding: max(28px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 140px max(16px, env(safe-area-inset-left)); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 36px; align-items: center; margin: 8px 0 40px; }
+.hero h1 { font-family: var(--f-read); font-weight: 500; font-size: clamp(3rem, 9vw, 5.6rem); line-height: .92; margin: 0 0 10px; letter-spacing: -.01em; }
+.hero .kick { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ember-ink); margin: 0 0 14px; }
+.hero p { color: var(--muted); line-height: 1.6; margin: 0 0 14px; max-width: 34rem; }
+.hero .art { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface); box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.hero .art img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.25) contrast(1.05); }
+.hero .art::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 110%, rgba(224,102,47,.35), transparent 60%); }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 20px; border-radius: 23px; font-weight: 600; font-size: .95rem; }
+.btn.primary { background: var(--ember); color: #160c07; }
+.btn.ghost { background: var(--sunk); }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--faint); font-size: .85rem; margin-top: 16px; }
+.section-t { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.card { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s; }
+.card:hover { transform: translateY(-2px); border-color: var(--ember); }
+.card .thumb { aspect-ratio: 16 / 10; background: var(--sunk) center / cover no-repeat; filter: sepia(.2); }
+.card .body { padding: 12px 14px 14px; display: grid; gap: 4px; }
+.card .num { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ember-ink); }
+.card .t { font-family: var(--f-read); font-size: 1.22rem; line-height: 1.15; }
+.card .sub { color: var(--faint); font-size: .8rem; display: flex; justify-content: space-between; gap: 8px; }
+.card .bar { height: 3px; background: var(--sunk); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+.card .bar i { display: block; height: 100%; background: var(--ember); width: 0; }
+.about { margin-top: 48px; color: var(--muted); font-size: .9rem; line-height: 1.7; max-width: 46rem; }
+.about h2 { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* ---------- vista de canto ---------- */
+.canto { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: 100vh; }
+.stage { position: sticky; top: 0; height: 100vh; background: #000; overflow: hidden; }
+.stage .pl { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease; }
+.stage .pl.on { opacity: 1; }
+.stage .pl img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: sepia(.18) contrast(1.06) brightness(.96); }
+.stage .pl.on img { animation: drift 40s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.09) translate(-1.2%, -1%); } }
+@media (prefers-reduced-motion: reduce) { .stage .pl.on img { animation: none; } .stage .pl { transition: none; } }
+.stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(13,10,9,.92), transparent 34%), radial-gradient(100% 70% at 50% 100%, rgba(224,102,47,.18), transparent 70%); }
+.stage .cap { position: absolute; left: 20px; right: 20px; bottom: 104px; z-index: 2; color: #e9dccb; font-size: .86rem; line-height: 1.45; text-shadow: 0 1px 8px #000; }
+.stage .cap b { display: block; font-family: var(--f-read); font-size: 1.15rem; font-weight: 500; margin-bottom: 2px; }
+.stage .cap small { color: #b9a996; }
+.topbar { position: absolute; left: 0; right: 0; top: 0; z-index: 3; display: flex; align-items: center; gap: 10px; padding: max(12px, env(safe-area-inset-top)) 16px 12px; background: linear-gradient(to bottom, rgba(13,10,9,.85), transparent); }
+.icon-btn { width: 40px; height: 40px; border-radius: 20px; display: inline-grid; place-items: center; background: rgba(28,23,21,.7); backdrop-filter: blur(6px); }
+.icon-btn svg { width: 20px; height: 20px; }
+.where { min-width: 0; flex: 1; }
+.where .k { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ember-ink); }
+.where .l { font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.map { position: absolute; right: 16px; top: 72px; z-index: 2; width: 132px; opacity: .92; }
+.map svg { width: 100%; height: auto; display: block; }
+
+.text { padding: 40px max(20px, env(safe-area-inset-right)) 220px 36px; max-width: 40rem; }
+.text .head small { display: block; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ember-ink); margin-bottom: 8px; }
+.text .head h2 { font-family: var(--f-read); font-weight: 500; font-size: clamp(2rem, 4.4vw, 2.8rem); line-height: 1.05; margin: 0 0 18px; text-wrap: balance; }
+.arg { color: var(--muted); font-size: .98rem; line-height: 1.65; padding: 14px 16px; border-left: 2px solid var(--ember); background: var(--bg2); border-radius: 0 8px 8px 0; margin: 0 0 34px; transition: background .4s, color .4s; }
+.arg.cur { background: var(--glow); color: var(--fg); }
+.terc { position: relative; font-family: var(--f-read); font-size: var(--read-size); line-height: 1.5; margin: 0 0 1.15em; padding-left: 3.1rem; }
+.terc .no { position: absolute; left: 0; top: .32em; width: 2.4rem; text-align: right; font-family: var(--f-ui); font-size: .72rem; color: var(--faint); font-variant-numeric: tabular-nums; }
+.v { display: block; border-radius: 5px; padding: 0 6px; margin-left: -6px; transition: background-color .35s, color .35s; cursor: pointer; color: #d9cebd; }
+.v:hover { background: rgba(255,255,255,.04); }
+.v.cur { background: var(--glow2); color: #fff6ea; }
+.v.past { color: #b5a796; }
+.v i, .v em { font-style: italic; }
+.next-c { margin: 46px 0 0; }
+.follow { position: fixed; z-index: 6; right: 18px; bottom: 112px; height: 40px; padding: 0 16px; border-radius: 20px; background: var(--ember); color: #160c07; font-weight: 600; font-size: .85rem; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+
+/* ---------- reproductor ---------- */
+.player { position: fixed; z-index: 8; left: 0; right: 0; bottom: 0; background: rgba(21,17,16,.94); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.player-in { max-width: 72rem; margin: 0 auto; display: grid; gap: 6px; }
+.seekrow { display: flex; align-items: center; gap: 10px; font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.seekrow input { flex: 1; }
+input[type=range] { -webkit-appearance: none; appearance: none; height: 22px; background: transparent; }
+input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--ember) var(--p, 0%), var(--sunk) var(--p, 0%)); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--fg); margin-top: -5px; }
+input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: var(--sunk); }
+input[type=range]::-moz-range-progress { height: 4px; background: var(--ember); }
+input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--fg); }
+.ctrl { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ctrl .left, .ctrl .right { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+.ctrl .right { justify-content: flex-end; }
+.ctrl .mid { display: flex; align-items: center; gap: 14px; }
+.np { min-width: 0; }
+.np .a { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ember-ink); }
+.np .b { font-size: .9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pbtn { width: 54px; height: 54px; border-radius: 27px; background: var(--ember); color: #160c07; display: grid; place-items: center; }
+.pbtn svg { width: 26px; height: 26px; }
+.sbtn { width: 42px; height: 42px; border-radius: 21px; display: grid; place-items: center; color: var(--fg); }
+.sbtn svg { width: 24px; height: 24px; }
+.chip { height: 34px; min-width: 44px; padding: 0 12px; border-radius: 17px; background: var(--sunk); font-weight: 600; font-size: .82rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.status { font-size: .78rem; color: var(--muted); min-height: 1em; text-align: center; }
+.status.err { color: #ff9a80; }
+
+/* ---------- panel de notas ---------- */
+.drawer { position: fixed; z-index: 9; inset: 0; background: rgba(0,0,0,.55); display: flex; justify-content: flex-end; }
+.drawer .in { width: min(30rem, 100%); height: 100%; overflow: auto; background: var(--surface); padding: max(18px, env(safe-area-inset-top)) 20px 40px; border-left: 1px solid var(--line); }
+.drawer h3 { font-family: var(--f-read); font-weight: 500; font-size: 1.6rem; margin: 6px 0 14px; }
+.drawer .note { font-size: .9rem; line-height: 1.6; color: #d6cabb; margin: 0 0 12px; padding: 10px 12px; border-radius: 8px; }
+.drawer .note b { color: var(--ember-ink); font-weight: 600; }
+.drawer .note.here { background: var(--glow); }
+.drawer .x { float: right; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 22px; }
+  .canto { display: block; }
+  .stage { position: sticky; top: 0; height: 42vh; z-index: 4; }
+  .stage .cap { bottom: 12px; font-size: .78rem; }
+  .stage .cap b { font-size: 1rem; }
+  .map { width: 74px; top: 64px; right: 10px; }
+  .text { padding: 22px 16px 220px; max-width: none; }
+  .terc { padding-left: 2.4rem; }
+  .terc .no { width: 1.9rem; }
+  .np { display: none; }
+  .follow { bottom: 132px; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div class="player" id="player" hidden>
+  <div class="player-in">
+    <div class="seekrow"><span id="tCur">0:00</span><input id="seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posición en el canto"><span id="tDur">0:00</span></div>
+    <div class="ctrl">
+      <div class="left"><div class="np"><div class="a" id="npA"></div><div class="b" id="npB"></div></div></div>
+      <div class="mid">
+        <button class="sbtn" id="back" aria-label="Retroceder 15 segundos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><text x="12" y="15.5" font-size="7" text-anchor="middle" fill="currentColor" stroke="none" font-family="Inter">15</text></svg></button>
+        <button class="pbtn" id="play" aria-label="Reproducir"><svg id="icoPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg><svg id="icoPause" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6.5" y="5" width="4" height="14" rx="1"/><rect x="13.5" y="5" width="4" height="14" rx="1"/></svg></button>
+        <button class="sbtn" id="fwd" aria-label="Adelantar 15 segundos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/><text x="12" y="15.5" font-size="7" text-anchor="middle" fill="currentColor" stroke="none" font-family="Inter">15</text></svg></button>
+      </div>
+      <div class="right">
+        <button class="chip" id="rate" aria-label="Velocidad">1×</button>
+        <button class="chip" id="notesBtn" aria-label="Notas del canto">Notas</button>
+      </div>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+</div>
+<button class="follow" id="follow" hidden>Volver a la voz</button>
+<div class="drawer" id="drawer" hidden><div class="in" id="drawerIn"></div></div>
+<audio id="au" preload="metadata"></audio>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const app = $('app'), au = $('au');
+const KEY = 'infierno-audiolibro-v1';
+const RATES = [0.8, 1, 1.15, 1.25, 1.5, 1.75, 2];
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+const st = { last: saved.last || 1, pos: saved.pos || {}, rate: saved.rate || 1 };
+const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} };
+
+const fmt = s => { s = Math.max(0, Math.floor(s || 0)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return h ? `${h}:${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}` : `${m}:${String(x).padStart(2,'0')}`; };
+const human = s => { const m = Math.round(s / 60); if (m < 60) return `${m} min`; const h = Math.floor(m / 60), r = m % 60; return r ? `${h} h ${r} min` : `${h} h`; };
+const status = (m, err) => { $('status').textContent = m || ''; $('status').classList.toggle('err', !!err); };
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md = s => esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+const VER = '2';   // súbelo cada vez que cambien los datos o el audio, para que nadie se quede con la versión vieja
+let INDEX = null, C = null, cache = {};
+async function getIndex() { if (!INDEX) INDEX = await (await fetch(`data/indice.json?v=${VER}`)).json(); return INDEX; }
+async function getCanto(n) { if (!cache[n]) cache[n] = await (await fetch(`data/canto_${String(n).padStart(2,'0')}.json?v=${VER}`)).json(); return cache[n]; }
+
+// ---------- mapa del Infierno ----------
+const BANDS = ['Antesala','1 · Limbo','2 · Lujuria','3 · Gula','4 · Avaricia','5 · Estigia','6 · Herejes','7 · Violentos','8 · Malebolge','9 · Cocito','Lucifer'];
+const ZBAND = z => {
+  if (!z) return -1;
+  if (z === 'selva') return -1; if (z === 'antesala') return 0; if (z === 'limbo') return 1; if (z === 'lujuria') return 2;
+  if (z === 'gula') return 3; if (z === 'avaricia') return 4; if (z === 'estigia') return 5; if (z === 'dite' || z === 'herejes') return 6;
+  if (z.startsWith('violentos') || z === 'suicidas' || z === 'arenal') return 7; if (z === 'gerion' || z.startsWith('malebolge')) return 8;
+  if (z === 'pozo_gigantes' || ['caina','antenora','tolomea','judeca'].includes(z)) return 9; if (z === 'lucifer') return 10; if (z === 'salida') return 11;
+  return -1;
+};
+function mapSVG(z) {
+  const b = ZBAND(z), W = 132, top = 18, h = 13;
+  let s = `<svg viewBox="0 0 ${W} ${top + BANDS.length * h + 22}" role="img" aria-label="Mapa del Infierno">`;
+  s += `<text x="${W/2}" y="11" text-anchor="middle" font-size="8.5" fill="${b === -1 ? '#f08a52' : '#a8998a'}" font-family="Inter" letter-spacing="1">${b === -1 ? '● SELVA OSCURA' : 'SUPERFICIE'}</text>`;
+  BANDS.forEach((name, i) => {
+    const w = W - 8 - i * 10.5, x = (W - w) / 2, y = top + i * h, on = i === b;
+    s += `<rect x="${x}" y="${y}" width="${w}" height="${h - 2}" rx="3" fill="${on ? 'rgba(224,102,47,.85)' : 'rgba(28,23,21,.78)'}" stroke="${on ? '#f08a52' : '#3a2f29'}" stroke-width="1"/>`;
+    s += `<text x="${W/2}" y="${y + h - 4.6}" text-anchor="middle" font-size="7.4" font-family="Inter" fill="${on ? '#160c07' : '#bfb2a3'}" font-weight="${on ? 700 : 500}">${name}</text>`;
+  });
+  const y2 = top + BANDS.length * h + 12;
+  s += `<text x="${W/2}" y="${y2}" text-anchor="middle" font-size="8.5" fill="${b === 11 ? '#f08a52' : '#75685c'}" font-family="Inter" letter-spacing="1">${b === 11 ? '● A VER LAS ESTRELLAS' : ''}</text>`;
+  return s + '</svg>';
+}
+
+// ---------- índice ----------
+async function showIndex() {
+  stopFollowUI();
+  const idx = await getIndex();
+  const total = idx.cantos.reduce((a, c) => a + c.dur, 0);
+  const last = idx.cantos.find(c => c.n === st.last) || idx.cantos[0];
+  const lastPos = st.pos[last.n] || 0;
+  app.innerHTML = `
+  <div class="home">
+    <section class="hero">
+      <div>
+        <p class="kick">Dante Alighieri · La Divina Comedia</p>
+        <h1>Infierno</h1>
+        <p>Los 34 cantos del Infierno, narrados verso por verso en español. Mientras escuchas, el texto avanza con la voz y aparecen los grabados de Gustave Doré del lugar donde va Dante.</p>
+        <div class="cta">
+          <button class="btn primary" id="go">${lastPos > 5 ? `Seguir en el Canto ${last.roman}` : 'Empezar el viaje'}</button>
+          ${lastPos > 5 ? '<button class="btn ghost" id="go1">Desde el Canto I</button>' : ''}
+        </div>
+        <div class="meta-row"><span>34 cantos</span><span>4.720 versos</span><span>${human(total)} de audio</span></div>
+      </div>
+      <div class="art"><img src="${idx.portada}" alt="Dante perdido en la selva oscura, grabado de Gustave Doré"></div>
+    </section>
+    <p class="section-t">Los cantos</p>
+    <div class="grid">${idx.cantos.map(c => {
+      const p = Math.min(100, 100 * (st.pos[c.n] || 0) / c.dur);
+      return `<button class="card" data-n="${c.n}"><div class="thumb" style="background-image:url('${c.thumb}')"></div><div class="body"><span class="num">${esc(c.lugar || '')}</span><span class="t">Canto ${c.roman}</span><span class="sub"><span></span><span>${human(c.dur)}</span></span><span class="bar"><i style="width:${p}%"></i></span></div></button>`;
+    }).join('')}</div>
+    <section class="about">
+      <h2>Sobre esta edición</h2>
+      <p>La traducción es nueva y completa, hecha verso por verso desde el texto crítico de Giorgio Petrocchi. La tradujo y revisó Claude, la inteligencia artificial de Anthropic. Se escucha solo el texto de Dante; quien quiera contexto tiene notas opcionales en el botón «Notas».</p>
+      <p>Voz: «God», de la biblioteca de voces de ElevenLabs. Música: compuesta para cada escena con ElevenLabs Music. Ilustraciones: los grabados de Gustave Doré para el Infierno (1861) y, en los cantos que Doré no ilustró, obras antiguas de otros artistas; todas de dominio público, tomadas de Wikimedia Commons.</p>
+    </section>
+  </div>`;
+  $('player').hidden = true;
+  app.querySelectorAll('.card').forEach(b => b.onclick = () => go(+b.dataset.n));
+  $('go').onclick = () => go(last.n, true);
+  if ($('go1')) $('go1').onclick = () => go(1, true, 0);
+  document.title = 'Infierno · Audiolibro';
+  window.scrollTo(0, 0);
+}
+
+// ---------- canto ----------
+let segs = [], cur = -1, plateIdx = -1, sceneIdx = -1, follow = true, autoScrolling = false;
+function go(n, play = false, t) { location.hash = `#/canto/${n}`; pendingPlay = play; pendingT = t; }
+let pendingPlay = false, pendingT;
+
+async function showCanto(n) {
+  const idx = await getIndex();
+  if (!idx.cantos.find(c => c.n === n)) return showIndex();
+  C = await getCanto(n);
+  st.last = n; persist();
+  const prev = idx.cantos.find(c => c.n === n - 1), next = idx.cantos.find(c => c.n === n + 1);
+  app.innerHTML = `
+  <div class="canto">
+    <div class="stage" id="stage">
+      ${C.plates.map((p, i) => `<div class="pl" data-i="${i}"><img loading="${i < 2 ? 'eager' : 'lazy'}" src="${p.img}" alt="${esc(p.pie)}"></div>`).join('')}
+      <div class="topbar">
+        <button class="icon-btn" id="home" aria-label="Volver al índice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="where"><div class="k">Canto ${C.roman}</div><div class="l" id="lugar"></div></div>
+        ${prev ? `<button class="icon-btn" id="prevC" aria-label="Canto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 20L9 12l10-8z"/><path d="M5 19V5"/></svg></button>` : ''}
+        ${next ? `<button class="icon-btn" id="nextC" aria-label="Canto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14"/></svg></button>` : ''}
+      </div>
+      <div class="map" id="map"></div>
+      <div class="cap" id="cap"></div>
+    </div>
+    <div class="text" id="text">
+      <div class="head"><small>Infierno</small><h2>Canto ${C.roman}</h2></div>
+      <div id="verses"></div>
+      <div class="next-c">${next ? `<button class="btn primary" id="nextBtn">Seguir con el Canto ${next.roman} →</button>` : '<p class="arg">Aquí termina el Infierno.</p>'}</div>
+    </div>
+  </div>`;
+  const vbox = $('verses');
+  segs = [];
+  const tT = C.segs.find(s => s.k === 'titulo');
+  if (tT) segs.push({ t0: tT.t0, t1: tT.t1, el: app.querySelector('.head h2'), n: 0 });
+  const times = {}; C.segs.filter(s => s.k === 'v').forEach(s => times[s.n] = s);
+  let html = '';
+  for (let i = 0; i < C.verses.length; i += 3) {
+    html += `<p class="terc"><span class="no">${i + 1}</span>`;
+    for (let j = i; j < Math.min(i + 3, C.verses.length); j++) html += `<span class="v" data-n="${j + 1}">${md(C.verses[j])}</span>`;
+    html += '</p>';
+  }
+  vbox.innerHTML = html;
+  vbox.querySelectorAll('.v').forEach(el => { const s = times[+el.dataset.n]; if (s) segs.push({ t0: s.t0, t1: s.t1, el, n: +el.dataset.n }); });
+  segs.sort((a, b) => a.t0 - b.t0);
+  vbox.onclick = e => { const v = e.target.closest('.v'); if (!v) return; const s = times[+v.dataset.n]; if (s) { setFollow(true); seek(s.t0 + 0.01, true); } };
+  $('home').onclick = () => { location.hash = '#/'; };
+  if ($('prevC')) $('prevC').onclick = () => go(n - 1, !au.paused, 0);
+  if ($('nextC')) $('nextC').onclick = () => go(n + 1, !au.paused, 0);
+  if ($('nextBtn')) $('nextBtn').onclick = () => go(n + 1, true, 0);
+  cur = -1; plateIdx = -1; sceneIdx = -1;
+  $('player').hidden = false;
+  $('npA').textContent = 'Infierno'; $('npB').textContent = `Canto ${C.roman}`;
+  $('tDur').textContent = fmt(C.dur); $('seek').max = C.dur;
+  document.title = `Canto ${C.roman} · Infierno`;
+  window.scrollTo(0, 0);
+  const startT = pendingT != null ? pendingT : (st.pos[n] && st.pos[n] < C.dur - 8 ? st.pos[n] : 0);
+  const wantPlay = pendingPlay; pendingPlay = false; pendingT = undefined;
+  loadAudio(C.audio, startT, wantPlay);
+  updateMedia();
+  tick(true);
+}
+
+// ---------- audio ----------
+let pendingSeek = null, wantPlay = false;
+function loadAudio(src, t, play) {
+  pendingSeek = t; wantPlay = play;
+  au.src = `${src}?v=${VER}`; au.defaultPlaybackRate = st.rate; au.playbackRate = st.rate; au.load();
+  if (play) au.play().catch(() => {});
+}
+au.addEventListener('loadedmetadata', () => {
+  au.playbackRate = st.rate;
+  if (pendingSeek != null) { try { au.currentTime = pendingSeek; } catch (e) {} pendingSeek = null; }
+  if (wantPlay) au.play().catch(() => status('Toca play para empezar.'));
+  tick(true);
+});
+au.addEventListener('waiting', () => status('Cargando audio…'));
+au.addEventListener('playing', () => status(''));
+au.addEventListener('play', () => { $('icoPlay').hidden = true; $('icoPause').hidden = false; $('play').setAttribute('aria-label', 'Pausa'); });
+au.addEventListener('pause', () => { $('icoPlay').hidden = false; $('icoPause').hidden = true; $('play').setAttribute('aria-label', 'Reproducir'); savePos(); });
+au.addEventListener('error', () => status('No se pudo cargar el audio. Revisa tu conexión y toca play otra vez.', true));
+au.addEventListener('ended', () => { if (!C) return; st.pos[C.n] = C.dur; persist(); if (INDEX && INDEX.cantos.find(c => c.n === C.n + 1)) go(C.n + 1, true, 0); else status('Terminaste el Infierno.'); });
+au.addEventListener('timeupdate', () => tick());
+function seek(t, play) { if (!C) return; t = Math.max(0, Math.min(t, C.dur - 0.3)); try { au.currentTime = t; } catch (e) { pendingSeek = t; } if (play) au.play().catch(() => {}); tick(true); }
+function savePos() { if (C) { st.pos[C.n] = au.currentTime || 0; persist(); } }
+setInterval(() => { if (!au.paused) savePos(); }, 5000);
+
+$('play').onclick = () => { if (!C) return; if (au.paused) { au.playbackRate = st.rate; au.play().catch(() => status('Toca play otra vez.', true)); } else au.pause(); };
+$('back').onclick = () => seek((au.currentTime || 0) - 15);
+$('fwd').onclick = () => seek((au.currentTime || 0) + 15);
+const seekEl = $('seek');
+seekEl.addEventListener('input', () => { $('tCur').textContent = fmt(+seekEl.value); seekEl.style.setProperty('--p', `${100 * seekEl.value / (C ? C.dur : 1)}%`); });
+seekEl.addEventListener('change', () => { setFollow(true); seek(+seekEl.value); });
+const rateTxt = r => String(r).replace('.', ',') + '×';
+$('rate').textContent = rateTxt(st.rate);
+$('rate').onclick = () => { const i = RATES.indexOf(st.rate); st.rate = RATES[(i + 1) % RATES.length]; au.playbackRate = st.rate; $('rate').textContent = rateTxt(st.rate); persist(); };
+$('notesBtn').onclick = openNotes;
+$('drawer').onclick = e => { if (e.target === $('drawer')) $('drawer').hidden = true; };
+document.addEventListener('keydown', e => {
+  if (!C || e.target.closest('input')) return;
+  if (e.code === 'Space') { e.preventDefault(); $('play').click(); }
+  if (e.code === 'ArrowLeft') seek((au.currentTime || 0) - 15);
+  if (e.code === 'ArrowRight') seek((au.currentTime || 0) + 15);
+  if (e.code === 'Escape') $('drawer').hidden = true;
+});
+
+// ---------- seguir la voz ----------
+function curIndex(t) { let lo = 0, hi = segs.length - 1, ans = -1; while (lo <= hi) { const m = (lo + hi) >> 1; if (segs[m].t0 <= t) { ans = m; lo = m + 1; } else hi = m - 1; } return ans; }
+function tick(force) {
+  if (!C) return;
+  const t = au.currentTime || 0;
+  $('tCur').textContent = fmt(t);
+  if (document.activeElement !== seekEl) { seekEl.value = t; seekEl.style.setProperty('--p', `${100 * t / C.dur}%`); }
+  const i = curIndex(t);
+  if (i !== cur || force) {
+    if (cur >= 0 && segs[cur]) segs[cur].el.classList.remove('cur');
+    segs.forEach((s, k) => s.el.classList.toggle('past', k < i && s.el.classList.contains('v')));
+    cur = i;
+    if (i >= 0 && t <= segs[i].t1 + 3) {
+      segs[i].el.classList.add('cur');
+      if (follow) scrollToEl(segs[i].el);
+    }
+  }
+  // lámina
+  let p = 0; C.plates.forEach((pl, k) => { if (t >= pl.t0) p = k; });
+  if (p !== plateIdx) {
+    app.querySelectorAll('.stage .pl').forEach((el, k) => el.classList.toggle('on', k === p));
+    plateIdx = p; const pl = C.plates[p];
+    $('cap').innerHTML = pl ? `<b>${esc(pl.pie)}</b><small>${esc(pl.autor)}</small>` : '';
+    updateMedia();
+  }
+  // escena
+  let s = 0; C.scenes.forEach((sc, k) => { if (t >= sc.t0) s = k; });
+  if (s !== sceneIdx) { sceneIdx = s; const sc = C.scenes[s]; $('lugar').textContent = sc ? sc.lugar : ''; $('map').innerHTML = mapSVG(sc && sc.zona); }
+}
+function scrollToEl(el) {
+  const r = el.getBoundingClientRect();
+  const narrow = window.matchMedia('(max-width: 900px)').matches;
+  const topPad = narrow ? window.innerHeight * 0.42 : 0;
+  const vis = window.innerHeight - 140 - topPad;
+  const target = window.scrollY + r.top - topPad - vis * 0.32;
+  if (r.top < topPad + 40 || r.bottom > topPad + vis * 0.8) {
+    autoScrolling = true; window.scrollTo({ top: target, behavior: 'smooth' });
+    clearTimeout(scrollToEl.t); scrollToEl.t = setTimeout(() => autoScrolling = false, 900);
+  }
+}
+function setFollow(v) { follow = v; $('follow').hidden = v || !C; if (v && cur >= 0 && segs[cur]) scrollToEl(segs[cur].el); }
+function stopFollowUI() { $('follow').hidden = true; }
+$('follow').onclick = () => setFollow(true);
+['wheel', 'touchmove'].forEach(ev => window.addEventListener(ev, () => { if (C && !autoScrolling && !au.paused) setFollow(false); }, { passive: true }));
+
+// ---------- notas ----------
+function openNotes() {
+  if (!C) return;
+  const vn = cur >= 0 && segs[cur] ? segs[cur].n : 0;
+  const inRef = ref => { const m = ref.match(/(\d+)(?:-(\d+))?/); if (!m) return false; const a = +m[1], b = +(m[2] || m[1]); return vn >= a && vn <= b; };
+  $('drawerIn').innerHTML = `<button class="chip x" id="xNotes">Cerrar</button><h3>Notas · Canto ${C.roman}</h3>` +
+    C.notes.map(([r, tx]) => `<p class="note ${inRef(r) ? 'here' : ''}"><b>${esc(r)}.</b> ${md(tx)}</p>`).join('');
+  $('drawer').hidden = false;
+  $('xNotes').onclick = () => $('drawer').hidden = true;
+  const here = $('drawerIn').querySelector('.here'); if (here) here.scrollIntoView({ block: 'center' });
+}
+
+// ---------- pantalla de bloqueo ----------
+function updateMedia() {
+  if (!('mediaSession' in navigator) || !C) return;
+  const pl = C.plates[Math.max(0, plateIdx)];
+  const art = pl ? new URL(pl.thumb || pl.img, location.href).href : '';
+  navigator.mediaSession.metadata = new MediaMetadata({ title: `Infierno · Canto ${C.roman}`, artist: 'Dante Alighieri', album: 'La Divina Comedia', artwork: art ? [{ src: art, sizes: '512x512', type: 'image/jpeg' }] : [] });
+  navigator.mediaSession.setActionHandler('play', () => au.play());
+  navigator.mediaSession.setActionHandler('pause', () => au.pause());
+  navigator.mediaSession.setActionHandler('seekbackward', () => seek((au.currentTime || 0) - 15));
+  navigator.mediaSession.setActionHandler('seekforward', () => seek((au.currentTime || 0) + 15));
+  navigator.mediaSession.setActionHandler('previoustrack', () => { if (C.n > 1) go(C.n - 1, true, 0); });
+  navigator.mediaSession.setActionHandler('nexttrack', () => { if (C.n < 34) go(C.n + 1, true, 0); });
+}
+
+// ---------- rutas ----------
+function route() {
+  const m = location.hash.match(/^#\/canto\/(\d+)/);
+  if (m) { if (C && +m[1] === C.n && au.src) return; savePos(); showCanto(+m[1]); }
+  else { savePos(); if (!au.paused) au.pause(); C = null; showIndex(); }
+}
+window.addEventListener('hashchange', route);
+route();
+})();
+</script>
+</body>
+</html>
