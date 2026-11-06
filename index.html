@@ -51,6 +51,13 @@ a { color: var(--ember-ink); }
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 20px; border-radius: 23px; font-weight: 600; font-size: .95rem; }
 .btn.primary { background: var(--ember); color: #160c07; }
 .btn.ghost { background: var(--sunk); }
+a.btn { text-decoration: none; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn.club { background: transparent; color: var(--ember-ink); box-shadow: inset 0 0 0 1.5px var(--ember); transition: background .2s; }
+.btn.club:hover { background: var(--glow); }
+.club-band { margin: 44px 0 0; padding: 26px 28px; border-radius: 14px; border: 1px solid var(--line); background: radial-gradient(90% 140% at 100% 100%, rgba(224,102,47,.22), transparent 60%), var(--bg2); display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; }
+.club-band .k { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ember-ink); }
+.club-band h3 { font-family: var(--f-read); font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.3rem); line-height: 1.05; margin: 6px 0 0; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--faint); font-size: .85rem; margin-top: 16px; }
 .section-t { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
@@ -100,7 +107,8 @@ a { color: var(--ember-ink); }
 .v.cur { background: var(--glow2); color: #fff6ea; }
 .v.past { color: #b5a796; }
 .v i, .v em { font-style: italic; }
-.next-c { margin: 46px 0 0; }
+.next-c { margin: 46px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.next-c .arg { flex-basis: 100%; margin: 0 0 6px; }
 .follow { position: fixed; z-index: 6; right: 18px; bottom: 112px; height: 40px; padding: 0 16px; border-radius: 20px; background: var(--ember); color: #160c07; font-weight: 600; font-size: .85rem; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
 
 /* ---------- reproductor ---------- */
@@ -195,6 +203,8 @@ const status = (m, err) => { $('status').textContent = m || ''; $('status').clas
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const md = s => esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
+const CLUB = 'https://www.skool.com/clubdemetas';
+const clubBtn = (cls = 'club') => `<a class="btn ${cls}" href="${CLUB}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg>Entra al Club de Lectura</a>`;
 const VER = '2';   // súbelo cada vez que cambien los datos o el audio, para que nadie se quede con la versión vieja
 let INDEX = null, C = null, cache = {};
 async function getIndex() { if (!INDEX) INDEX = await (await fetch(`data/indice.json?v=${VER}`)).json(); return INDEX; }
@@ -241,6 +251,7 @@ async function showIndex() {
         <div class="cta">
           <button class="btn primary" id="go">${lastPos > 5 ? `Seguir en el Canto ${last.roman}` : 'Empezar el viaje'}</button>
           ${lastPos > 5 ? '<button class="btn ghost" id="go1">Desde el Canto I</button>' : ''}
+          ${clubBtn()}
         </div>
         <div class="meta-row"><span>34 cantos</span><span>4.720 versos</span><span>${human(total)} de audio</span></div>
       </div>
@@ -251,6 +262,10 @@ async function showIndex() {
       const p = Math.min(100, 100 * (st.pos[c.n] || 0) / c.dur);
       return `<button class="card" data-n="${c.n}"><div class="thumb" style="background-image:url('${c.thumb}')"></div><div class="body"><span class="num">${esc(c.lugar || '')}</span><span class="t">Canto ${c.roman}</span><span class="sub"><span></span><span>${human(c.dur)}</span></span><span class="bar"><i style="width:${p}%"></i></span></div></button>`;
     }).join('')}</div>
+    <section class="club-band">
+      <div><div class="k">Club de Lectura</div><h3>Lee con nosotros</h3></div>
+      ${clubBtn('primary')}
+    </section>
     <section class="about">
       <h2>Sobre esta edición</h2>
       <p>La traducción es nueva y completa, hecha verso por verso desde el texto crítico de Giorgio Petrocchi. La tradujo y revisó Claude, la inteligencia artificial de Anthropic. Se escucha solo el texto de Dante; quien quiera contexto tiene notas opcionales en el botón «Notas».</p>
@@ -292,7 +307,7 @@ async function showCanto(n) {
     <div class="text" id="text">
       <div class="head"><small>Infierno</small><h2>Canto ${C.roman}</h2></div>
       <div id="verses"></div>
-      <div class="next-c">${next ? `<button class="btn primary" id="nextBtn">Seguir con el Canto ${next.roman} →</button>` : '<p class="arg">Aquí termina el Infierno.</p>'}</div>
+      <div class="next-c">${next ? `<button class="btn primary" id="nextBtn">Seguir con el Canto ${next.roman} →</button>${clubBtn()}` : `<p class="arg">Aquí termina el Infierno.</p>${clubBtn('primary')}`}</div>
     </div>
   </div>`;
   const vbox = $('verses');
