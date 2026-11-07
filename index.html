@@ -357,8 +357,9 @@ au.addEventListener('loadedmetadata', () => {
 });
 au.addEventListener('waiting', () => status('Cargando audio…'));
 au.addEventListener('playing', () => status(''));
-au.addEventListener('play', () => { $('icoPlay').hidden = true; $('icoPause').hidden = false; $('play').setAttribute('aria-label', 'Pausa'); });
-au.addEventListener('pause', () => { $('icoPlay').hidden = false; $('icoPause').hidden = true; $('play').setAttribute('aria-label', 'Reproducir'); savePos(); });
+// los íconos son SVG: no tienen la propiedad .hidden de los elementos HTML, hay que cambiar el atributo
+au.addEventListener('play', () => { $('icoPlay').toggleAttribute('hidden', true); $('icoPause').toggleAttribute('hidden', false); $('play').setAttribute('aria-label', 'Pausa'); });
+au.addEventListener('pause', () => { $('icoPlay').toggleAttribute('hidden', false); $('icoPause').toggleAttribute('hidden', true); $('play').setAttribute('aria-label', 'Reproducir'); savePos(); });
 au.addEventListener('error', () => status('No se pudo cargar el audio. Revisa tu conexión y toca play otra vez.', true));
 au.addEventListener('ended', () => { if (!C) return; st.pos[C.n] = C.dur; persist(); if (INDEX && INDEX.cantos.find(c => c.n === C.n + 1)) go(C.n + 1, true, 0); else status('Terminaste el Infierno.'); });
 au.addEventListener('timeupdate', () => tick());
